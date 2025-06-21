@@ -23,7 +23,6 @@ const Hero = () => {
 const [openQr, setOpenQr] = useState(false);
 
   const { mutate: submitRequest } = useShortenUrl();
-  const [submitting, setSubmitting] = useState(false);
 
   const [passwordError, setPasswordError] = useState("");
 
@@ -53,11 +52,8 @@ const [openQr, setOpenQr] = useState(false);
     ...(password && { password }),
     ...(expiration && { expiration }),
     };
-    setSubmitting(true);
     submitRequest(body, {
       onSuccess: (data) => {
-        setSubmitting(false);
-        console.log('data', data)
         if (data?.status == 400) {
           toast.error(data?.response?.data?.message || "Error",{
             position: 'top-center',
@@ -73,7 +69,7 @@ const [openQr, setOpenQr] = useState(false);
       },
       onError: (error) => {
         console.log(error);
-        setSubmitting(false);
+       
       },
     });
   };
@@ -88,11 +84,8 @@ const [openQr, setOpenQr] = useState(false);
           ...(password && { password }),
           ...(expiration && { expiration }),
           };
-    setSubmitting(true);
     submitRequest(body, {
       onSuccess: (data) => {
-        setSubmitting(false);
-        console.log('data', data)
         if (data?.status == 201) {
           setOpenQr(true);
           setShortened(data?.shortUrl)
@@ -100,7 +93,6 @@ const [openQr, setOpenQr] = useState(false);
       },
       onError: (error) => {
         console.log(error);
-        setSubmitting(false);
       },
     });
   };

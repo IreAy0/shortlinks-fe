@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Eye, EyeOff } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useRegister } from "@/store/api/auth";
 import { toast } from "sonner";
 
@@ -50,7 +50,6 @@ export default function Signup() {
   });
   const [passwordError, setPasswordError] = useState("");
   const [confirmError, setConfirmError] = useState("");
-  const [submitting, setSubmitting] = useState(false)
   const { mutate: submitRequest } = useRegister();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,7 +79,6 @@ export default function Signup() {
     }
      submitRequest(body, {
       onSuccess: (data) => {
-        setSubmitting(false);
         if (data?.status == 201) {
          console.log('data', data)
         }
@@ -90,7 +88,7 @@ export default function Signup() {
          if (error?.status == 401) {
            toast.error(error?.response?.data?.message || ' Invalid credentials', {position: 'top-center'})
         }
-        setSubmitting(false);
+       
       },
     });
   };

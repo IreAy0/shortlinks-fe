@@ -1,22 +1,17 @@
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
-import { FiCopy, FiExternalLink, FiShare2, FiMessageCircle } from "react-icons/fi"
+import { FiCopy } from "react-icons/fi"
 import { FaTwitter, FaFacebookF, FaLinkedinIn, FaInstagram, FaWhatsapp, FaEnvelope, FaYoutube } from "react-icons/fa"
 import { useState } from "react";
 
  
 
 export function ShareModal({ open, onClose, url }) {
-  const [showMiniConfetti, setShowMiniConfetti] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const socialLinks = [

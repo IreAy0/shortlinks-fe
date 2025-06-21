@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 "use client";
 import { Button } from "@/components/ui/button";
 // import {
@@ -14,9 +15,7 @@ import {
 import { useEffect, useState } from "react";
 
 export default function ModeToggle() {
-  const { theme, setTheme } = useState("dark");
   const [mounted, setMounted] = useState(false);
-
   // Only show the theme toggle after mounting to avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
@@ -42,7 +41,7 @@ export default function ModeToggle() {
       aria-label="Toggle Theme"
       // onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
-      {theme === "dark" ? (
+      {true ? (
         <Sun className="size-5" />
       ) : (
         <Moon className="size-5" />

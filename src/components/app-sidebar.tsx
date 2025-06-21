@@ -1,31 +1,17 @@
 import * as React from "react"
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
   ChartBarIncreasingIcon,
-  Command,
-  Frame,
   GalleryVerticalEnd,
   Home,
   Link,
-  Map,
-  PieChart,
   QrCode,
-  Settings2,
-  SquareTerminal,
 } from "lucide-react"
 import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarMenuButton,
-  SidebarProvider,
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { Link as RouteLink } from "react-router-dom"
@@ -71,7 +57,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarMenuButton
-              size="lg"
               asChild
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >

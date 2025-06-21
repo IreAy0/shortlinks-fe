@@ -1,12 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { useGetUrls } from '@/store/api/url';
-import { Copy, Ellipsis, Eye, Link2, MessageCircle, MoreHorizontal, Share, User } from 'lucide-react';
+import { Copy, Ellipsis, Link2, Share,  } from 'lucide-react';
 import dayjs from "dayjs"
-import relativeTime from "dayjs/plugin/relativeTime"
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { ShareModal } from '@/components/modals/share';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem,  DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { FaTrash } from 'react-icons/fa';
 import { Link as RouteLink } from 'react-router-dom';
 import { cn } from '@/lib/utils';

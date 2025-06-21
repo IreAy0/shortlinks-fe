@@ -14,7 +14,6 @@ import { FiCopy, FiExternalLink } from "react-icons/fi";
 import { useState } from "react";
 
 export function CopyUrl({ open, onClose, url }) {
-  const [showMiniConfetti, setShowMiniConfetti] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
@@ -44,16 +43,7 @@ export function CopyUrl({ open, onClose, url }) {
             style={{ position: "absolute", top: -60, left: 0, pointerEvents: "none" }}
           />
         )} */}
-        {/* Mini confetti on copy */}
-        {showMiniConfetti && (
-          <Confetti
-            numberOfPieces={40}
-            recycle={false}
-            width={200}
-            height={100}
-            style={{ position: "absolute", top: 60, left: "50%", transform: "translateX(-50%)", pointerEvents: "none" }}
-          />
-        )}
+       
           <div className="w-full flex items-center gap-2">
             <Label htmlFor="link" className="sr-only">
               Link

@@ -1,6 +1,5 @@
-import { Label } from '@/components/ui/label'
 import { Rocket } from 'lucide-react'
-import React, { Suspense, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 
 function AuthLayout() {

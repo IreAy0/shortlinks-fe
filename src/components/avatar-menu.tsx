@@ -10,7 +10,6 @@ import {
 import { LogOut, Settings, User } from "lucide-react";
 
 export default function AvatarMenu() {
-   const token = localStorage.getItem("token");
 
   const logout = () => {
       localStorage.clear()

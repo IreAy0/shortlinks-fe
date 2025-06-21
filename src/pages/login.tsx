@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Eye, EyeOff, Rocket } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { useLogin } from "@/store/api/auth";
 
@@ -35,24 +36,24 @@ export default function Login() {
         email: "",
         password: "",
       });
-    const [submitting, setSubmitting] = useState(false)
-    const [error, setError] = useState("");
+    // const [submitting, setSubmitting] = useState(false)
+    // const [error, setError] = useState("");
 
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (!form.email || !form.password) {
-      setError("Please fill in all fields");
+      // setError("Please fill in all fields");
       toast.error('Please fill in all fields', {position: 'top-center'})
       return;
     }
      submitRequest(form, {
       onSuccess: (data) => {
-        setSubmitting(false);
+        // setSubmitting(false);
         if (data?.status == 201) {
          console.log('data', data)
         }
@@ -62,7 +63,6 @@ export default function Login() {
          if (error?.status == 401) {
            toast.error(error?.response?.data?.message || ' Invalid credentials', {position: 'top-center'})
         }
-        setSubmitting(false);
       },
     });
   }

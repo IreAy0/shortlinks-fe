@@ -12,8 +12,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { FiCopy, FiExternalLink } from "react-icons/fi";
 import { useState } from "react";
+import type { ModalTypes } from "@/types/components";
 
-export function CopyUrl({ open, onClose, url }) {
+export function CopyUrl({ open, onClose, url }: ModalTypes) {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {

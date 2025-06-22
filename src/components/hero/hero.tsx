@@ -11,6 +11,7 @@ import { FiLink } from "react-icons/fi";
 import { CopyUrl } from "../modals/copyUrl";
 import { QrCode } from "../modals/QrCode";
 import { useShortenUrl } from "@/store/api/url";
+import type { SubmitShortenUrlFormType } from "@/types/forms";
 
 const Hero = () => {
   const [url, setUrl] = useState("");
@@ -36,16 +37,16 @@ const [openQr, setOpenQr] = useState(false);
     return "";
   };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setPassword(value);
     setPasswordError(validatePassword(value));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!url) return;
-    const body = {
+    const body: SubmitShortenUrlFormType = {
          "originalUrl": url,
           "baseUrl": "http://localhost:5000",
           ...(customAlias && { alias: customAlias }),
@@ -69,13 +70,12 @@ const [openQr, setOpenQr] = useState(false);
       },
       onError: (error) => {
         console.log(error);
-       
       },
     });
   };
 
-  const handleGenerateQr = (e) => {
-   e.preventDefault();
+  const handleGenerateQr = () => {
+
     if (!url) return;
     const body = {
          "originalUrl": url,
@@ -194,8 +194,8 @@ const [openQr, setOpenQr] = useState(false);
 
           {shortened && (
             <>
-              <CopyUrl url={shortened} open={openUrl} onClose={setOpenUrl} />
-              <QrCode url={shortened} open={openQr} onClose={setOpenQr} />
+              <CopyUrl url={shortened} open={openUrl} onClose={() => setOpenUrl(false)} />
+              <QrCode url={shortened} open={openQr} onClose={() => setOpenQr(false)} />
             </>
           )}
 

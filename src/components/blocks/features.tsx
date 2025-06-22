@@ -70,7 +70,7 @@ export default function Features() {
         {/* Benefits Grid */}
         <div className="grid lg:grid-cols-2 gap-6 w-full">
           {featuresList.map(({ icon, title, description }, index) => {
-              const SpecificLucideIcon = LucideIcons[icon as keyof typeof LucideIcons];
+              const SpecificLucideIcon = LucideIcons[icon as keyof typeof LucideIcons] as React.ElementType;
             return (
               <Card
                 key={title}
@@ -94,6 +94,7 @@ export default function Features() {
                               size={28}
                               className="text-primary group-hover:scale-110 transition-transform duration-300"
                             />
+                            {/* <Icon className="h-6 w-6 text-primary" /> */}
                           </div>
                         </div>
                       )}

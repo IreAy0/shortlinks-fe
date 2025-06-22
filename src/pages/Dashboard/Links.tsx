@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { useGetUrls } from '@/store/api/url';
 import { Copy, Ellipsis, Link2, Share,  } from 'lucide-react';
@@ -11,20 +11,21 @@ import { FaTrash } from 'react-icons/fa';
 import { Link as RouteLink } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
+import type { UrlType } from '@/types/url';
 
 function Links() {
 
     const { data: data } = useGetUrls();
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState("");
   const [shareModalOpen, setShareModalOpen] = useState({
     open: false,
     url: '',
   })
 
-  const copyToClipboard = (url, id) => {
+  const copyToClipboard = (url: string, id: string) => {
     navigator.clipboard.writeText(url);
      setCopied(id);
-    setTimeout(() => setCopied(false), 1200);
+    setTimeout(() => setCopied(""), 1200);
   };
     console.log('data', data)
 
@@ -55,7 +56,7 @@ Create new link
             </CardContent>
           </Card>
         )}
-          {data?.data?.map(({ alias, shortId, originalUrl, created_at, expiration, passwordHash, clicks, id }) => (
+          {data?.data?.map(({ alias, shortId, originalUrl, created_at, expiration, clicks, id }: UrlType) => (
             <div key={id} className="border p-6 rounded-xl bg-white">
               <div className="flex flex-col lg:flex-row items-start justify-between gap-4">
               <div className="flex items-center gap-3 w-full">
@@ -107,7 +108,7 @@ Create new link
         </div>
         </div>
 
-{shareModalOpen?.open &&  <ShareModal open={shareModalOpen?.open} onClose={setShareModalOpen} url={shareModalOpen?.url}/>}
+{shareModalOpen?.open &&  <ShareModal open={shareModalOpen?.open} onClose={() => setShareModalOpen} url={shareModalOpen?.url}/>}
     </div>
   )
 }

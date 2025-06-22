@@ -11,9 +11,10 @@ import {
 import { FiDownload, FiExternalLink } from "react-icons/fi";
 import { useRef } from "react";
 import QRCode from "react-qr-code";
+import type { ModalTypes } from "@/types/components";
 
-export function QrCode({ open, onClose, url }) {
-  const qrRef = useRef(null);
+export function QrCode({ open, onClose, url }: ModalTypes) {
+  const qrRef: any = useRef(null);
 
  const downloadQr = () => {
   const svg = qrRef.current?.querySelector("svg");
@@ -34,7 +35,15 @@ export function QrCode({ open, onClose, url }) {
     canvas.height = size;
     const ctx = canvas.getContext("2d");
     // Draw the image scaled up to fill the canvas
-    ctx.drawImage(img, 0, 0, size, size);
+    // const ctx = canvas.getContext("2d");
+
+if (ctx) {
+  ctx.drawImage(img, 0, 0, size, size);
+} else {
+  console.error("Could not get 2D context from canvas.");
+}
+
+    // ctx.drawImage(img, 0, 0, size, size);
     const pngFile = canvas.toDataURL("image/png");
 
     // Create a link to download the PNG

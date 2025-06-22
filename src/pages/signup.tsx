@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 import { useRegister } from "@/store/api/auth";
 import { toast } from "sonner";
+import axios from "axios";
 
 const Google = ({ ...props }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
@@ -84,11 +85,19 @@ export default function Signup() {
         }
       },
       onError: (error) => {
-        console.log(error);
-         if (error?.status == 401) {
-           toast.error(error?.response?.data?.message || ' Invalid credentials', {position: 'top-center'})
-        }
-       
+        // console.log(error);
+        //  if (error?.status == 401) {
+        //    toast.error(error?.response?.data?.message || ' Invalid credentials', {position: 'top-center'})
+        // }
+         if (axios.isAxiosError(error)) {
+            if (error.response?.status === 401) {
+              toast.error(error.response.data?.message || "Invalid credentials", {
+                position: "top-center",
+              });
+            }
+          } else {
+            toast.error("Something went wrong", { position: "top-center" });
+          }
       },
     });
   };

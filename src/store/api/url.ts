@@ -1,10 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import api from "../axios";
+import type { SubmitShortenUrlFormType, SubmitUnlockFormType } from "@/types/forms";
 
 export const useShortenUrl = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (data ) => {
+    mutationFn: async (data: SubmitShortenUrlFormType ) => {
       try {
         const response = await api.post(
           `/v1/url/shorten`,
@@ -24,7 +25,7 @@ export const useShortenUrl = () => {
 export const useUnlockLink = () => {
   const queryClient = useQueryClient();
    return useMutation({
-    mutationFn: async (data) => {
+    mutationFn: async (data: SubmitUnlockFormType) => {
       try {
         const response = await api.post(
           `/v1/url/verify/${data?.shortUrl}`,

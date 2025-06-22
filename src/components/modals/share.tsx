@@ -2,16 +2,18 @@ import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
+  DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { FiCopy } from "react-icons/fi"
 import { FaTwitter, FaFacebookF, FaLinkedinIn, FaInstagram, FaWhatsapp, FaEnvelope, FaYoutube } from "react-icons/fa"
 import { useState } from "react";
+import type { ModalTypes } from "@/types/components"
 
  
 
-export function ShareModal({ open, onClose, url }) {
+export function ShareModal({ open, onClose, url } : ModalTypes ) {
   const [copied, setCopied] = useState(false);
 
   const socialLinks = [
@@ -51,7 +53,6 @@ export function ShareModal({ open, onClose, url }) {
             <DialogHeader>
               <DialogTitle className="text-lg font-semibold">Share this link</DialogTitle>
             </DialogHeader>
-           
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 ">
               {socialLinks.map(({ icon, label, href }) => (
                 <a

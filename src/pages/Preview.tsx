@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useUnlockLink } from "@/store/api/url";
 import { useParams } from "react-router-dom";
+import type {  SubmitUnlockFormType } from "@/types/forms";
 
 function Preview() {
    const { shortUrl } = useParams();
@@ -17,10 +18,13 @@ function Preview() {
     e.preventDefault();
     setError("");
     setSubmitting(true);
-     const body = {
-      password: password,
+    
+     const body: SubmitUnlockFormType = {
       shortUrl: shortUrl,
+      password: password,
+      
     };
+
     setSubmitting(true);
     submitRequest(body, {
       onSuccess: (data) => {

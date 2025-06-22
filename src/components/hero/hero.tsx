@@ -47,8 +47,8 @@ const [openQr, setOpenQr] = useState(false);
     e.preventDefault();
     if (!url) return;
     const body: SubmitShortenUrlFormType = {
-         "originalUrl": url,
-          "baseUrl": "http://localhost:5000",
+         originalUrl: url,
+          baseUrl: import.meta.env.VITE_REDIRECT_URL,
           ...(customAlias && { alias: customAlias }),
     ...(password && { password }),
     ...(expiration && { expiration }),
@@ -78,8 +78,8 @@ const [openQr, setOpenQr] = useState(false);
 
     if (!url) return;
     const body = {
-         "originalUrl": url,
-          "baseUrl": "http://localhost:5000",
+         originalUrl: url,
+          baseUrl: import.meta.env.VITE_REDIRECT_URL,
           ...(customAlias && { alias: customAlias }),
           ...(password && { password }),
           ...(expiration && { expiration }),

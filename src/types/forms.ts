@@ -4,8 +4,8 @@ export type SubmitUnlockFormType = {
 }
 
 export type SubmitShortenUrlFormType = {
-  "originalUrl": string,
-  "baseUrl": string,
+  originalUrl: string,
+  baseUrl: string | undefined,
     alias?: string,
     password?: string,
     expiration?: string,
